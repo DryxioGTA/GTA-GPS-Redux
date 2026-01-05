@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
-#include <sstream>
-#include <iomanip>
+#include "SIMDString.h"
 
 namespace util
 {
@@ -11,14 +9,14 @@ namespace util
 		return m * 1.094f;
 	}
 
-	inline std::string Float2String(const float in, unsigned char precision = 2)
+	inline SIMDString<64> Float2String(const float in, unsigned char precision = 2)
 	{
 		std::ostringstream stream;
 		stream << std::fixed << std::setprecision(precision) << in;
-		return stream.str();
+		return SIMDString<64>(stream.str());
 	}
 
-	inline std::string makeDist(float dist, const bool units)
+	SIMDString<64> makeDist(float dist, const bool units)
 	{
 		// 1 Unit of distance = 1 meter.
 		switch (units)
@@ -45,6 +43,5 @@ namespace util
 			}
 			break;
 		}
-		return "";
 	}
 } // namespace util

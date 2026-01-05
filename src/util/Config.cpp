@@ -76,7 +76,6 @@ namespace util
 		/* Log */
 		LOGFILE_ENABLED = static_cast<bool>(std::atoi(ini["Misc"]["enableLog"].c_str()));
 
-		// Don't write back - it corrupts the file with empty lowercase keys
-		// file.write(ini);
+		file.write(ini);
 	}
 } // namespace util
